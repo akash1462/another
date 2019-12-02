@@ -1,0 +1,43 @@
+<div class= "welcome">
+                
+    <div class="center" *ngIf="!authService.admin && !authService.user && !authService.vendor">
+                <br>
+                <br>
+                <br>
+                <br>
+     
+   <img src="https://images.unsplash.com/photo-1565373679580-fc0cb538f49c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" >
+                <H3>Welcome to Bill Payment System</H3>
+     
+                <h5>One Solution to all your Bills</h5>
+               
+
+    </div>
+        
+        
+        <div *ngIf="authService.admin" >
+
+                You have been logged in as: Admin    
+                <app-admin [vendors]="vendor" *ngFor="let vendor of Vendors" ></app-admin>
+                
+
+        </div>
+
+    
+        <div *ngIf="authService.user" >   
+                <app-search></app-search>
+                <!-- <h5>Available Services</h5> -->
+                <div class="card-deck">
+                        <div class="row mx-auto">
+                                <app-vendor-info [vendors]="vendor" *ngFor="let vendor of Vendors" >
+                                </app-vendor-info>
+                        </div>
+                </div>
+        </div>  
+
+    
+        <div *ngIf="authService.vendor" >
+            You have been logged in as: Vendor
+        </div>
+
+</div>
